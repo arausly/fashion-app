@@ -1,19 +1,20 @@
-import React, { useState } from "react";
-import theme, { Box, Text } from "../../../components/theme";
-import { RectButton } from "react-native-gesture-handler";
-import { Feather as Icon } from "@expo/vector-icons";
-import { StyleSheet } from "react-native";
+import React from 'react'
+import theme, { Box, Text } from '../../../components/theme'
+import { RectButton } from 'react-native-gesture-handler'
+import { Feather as Icon } from '@expo/vector-icons'
+import { StyleSheet } from 'react-native'
 
 interface CheckboxProps {
-  label: string;
+  label: string
+  onChange: () => void
+  checked: boolean
 }
 
-const CheckBox = ({ label }: CheckboxProps) => {
-  const [checked, setChecked] = useState(false);
-  const themeColor: keyof typeof theme.colors = checked ? "primary" : "white";
-  const color = theme.colors[themeColor];
+const CheckBox = ({ label, checked, onChange }: CheckboxProps) => {
+  const themeColor: keyof typeof theme.colors = checked ? 'primary' : 'white'
+  const color = theme.colors[themeColor]
   return (
-    <RectButton onPress={() => setChecked((c) => !c)}>
+    <RectButton onPress={onChange}>
       <Box
         flexDirection="row"
         alignItems="center"
@@ -36,7 +37,7 @@ const CheckBox = ({ label }: CheckboxProps) => {
         <Text>{label}</Text>
       </Box>
     </RectButton>
-  );
-};
+  )
+}
 
-export default CheckBox;
+export default CheckBox

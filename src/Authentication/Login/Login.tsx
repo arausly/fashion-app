@@ -1,19 +1,20 @@
-import React from "react";
+import React from 'react'
+import { Formik } from 'formik'
+import * as Yup from 'yup'
 
 //components
-import { Container, Button, VARIANT_COLOR } from "../../components";
-import { SocialLogin } from "../components";
-import { Box, Text } from "../../components/theme";
-import { TextInput, Checkbox } from "../components/Form";
+import { Container, Button, VARIANT_COLOR } from '../../components'
+import { SocialLogin } from '../components'
+import { Box, Text } from '../../components/theme'
+import { TextInput, Checkbox } from '../components/Form'
 
 interface LoginProps {}
 
-const emailValidator = (email: string): boolean => {
-  const regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return regex.test(email);
-};
-
-const passwordValidator = (password: string): boolean => password.length >= 8;
+const LoginSchema = () =>
+  Yup.object().shape({
+    email: Yup.string().email('Invalid email').required('Required'),
+    password: Yup.string().min(6, 'To short').required('Required'),
+  })
 
 const Footer = () => {
   return (
@@ -22,7 +23,7 @@ const Footer = () => {
       <Box flex={1} alignItems="center" marginBottom="l">
         <Button
           variant={VARIANT_COLOR.transparent}
-          onPress={() => alert("Successful sign up")}
+          onPress={() => alert('Successful sign up')}
         >
           <Box flexDirection="row" alignItems="center" justifyContent="center">
             <Text variant="button" color="white">
@@ -35,8 +36,8 @@ const Footer = () => {
         </Button>
       </Box>
     </>
-  );
-};
+  )
+}
 
 const Login = () => {
   return (
@@ -48,40 +49,70 @@ const Login = () => {
         <Text variant="content" textAlign="center" marginBottom="l">
           Use your credentials below and login to your account
         </Text>
-        <Box marginBottom="l">
-          <TextInput
-            icon="mail"
-            placeholder="Enter your email"
-            validator={emailValidator}
-          />
-        </Box>
-        <TextInput
-          icon="lock"
-          placeholder="Enter your password"
-          validator={passwordValidator}
-        />
-        <Box
-          flexDirection="row"
-          alignItems="center"
-          justifyContent="center"
-          marginLeft="xl"
-          marginTop="l"
+        <Formik
+          initialValues={{ email: '', password: '', remember: false }}
+          onSubmit={(values) => console.log({ values })}
+          validationSchema={LoginSchema}
         >
-          <Checkbox label="Remember me" />
-          <Button variant={VARIANT_COLOR.transparent} onPress={() => {}}>
-            <Text color="primary">Forgot password</Text>
-          </Button>
-        </Box>
-        <Box justifyContent="center" alignItems="center" marginTop="l">
-          <Button
-            variant={VARIANT_COLOR.primary}
-            label="Login to your account"
-            onPress={() => alert("Login Successful")}
-          />
-        </Box>
+          {({
+            handleChange,
+            handleBlur,
+            isSubmitting,
+            values,
+            handleSubmit,
+            errors,
+            touched,
+            setFieldValue,
+          }) => (
+            <Box>
+              <Box marginBottom="l">
+                <TextInput
+                  icon="mail"
+                  placeholder="Enter your email"
+                  onChangeText={handleChange('email')}
+                  onBlur={handleBlur('email')}
+                  errors={errors.email}
+                  touched={touched.email}
+                />
+              </Box>
+              <TextInput
+                icon="lock"
+                placeholder="Enter your password"
+                onChangeText={handleChange('password')}
+                onBlur={handleBlur('password')}
+                errors={errors.password}
+                touched={touched.password}
+                secureTextEntry
+              />
+              <Box
+                flexDirection="row"
+                alignItems="center"
+                justifyContent="center"
+                marginLeft="xl"
+                marginTop="l"
+              >
+                <Checkbox
+                  label="Remember me"
+                  checked={values.remember}
+                  onChange={() => setFieldValue('remember', !values.remember)}
+                />
+                <Button variant={VARIANT_COLOR.transparent} onPress={() => {}}>
+                  <Text color="primary">Forgot password</Text>
+                </Button>
+              </Box>
+              <Box justifyContent="center" alignItems="center" marginTop="l">
+                <Button
+                  variant={VARIANT_COLOR.primary}
+                  label="Login to your account"
+                  onPress={handleSubmit}
+                />
+              </Box>
+            </Box>
+          )}
+        </Formik>
       </Box>
     </Container>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
