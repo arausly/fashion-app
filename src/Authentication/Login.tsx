@@ -4,11 +4,12 @@ import * as Yup from "yup";
 import { TextInput as RNTextInput } from "react-native";
 
 //components
-import { Container, Button, VARIANT_COLOR } from "../../components";
-import { SocialLogin } from "../components";
-import { Box, Text } from "../../components/theme";
-import { TextInput, Checkbox } from "../components/Form";
-import Footer from "../components/Footer";
+import { Container, Button, VARIANT_COLOR } from "../components";
+import { SocialLogin } from "./components";
+import { Box, Text } from "../components/theme";
+import { TextInput, Checkbox } from "./components/Form";
+import Footer from "./components/Footer";
+import { Routes, StackNavigationProps } from "../components/Navigation";
 
 interface LoginProps {}
 
@@ -18,7 +19,7 @@ const LoginSchema = () =>
     password: Yup.string().min(6, "To short").required("Required"),
   });
 
-const Login = () => {
+const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -36,13 +37,13 @@ const Login = () => {
         <Footer
           title="Don't have an account?"
           action="Sign up here"
-          onPress={() => alert("SignUp successful")}
+          onPress={() => navigation.navigate("SignUp")}
         />
       }
     >
       <Box padding="xl">
         <Text variant="title1" marginBottom="l">
-          Welcome Back
+          Welcome back
         </Text>
         <Text variant="content" textAlign="center" marginBottom="l">
           Use your credentials below and login to your account
@@ -92,7 +93,10 @@ const Login = () => {
                 formik.setFieldValue("remember", !formik.values.remember)
               }
             />
-            <Button variant={VARIANT_COLOR.transparent} onPress={() => {}}>
+            <Button
+              variant={VARIANT_COLOR.transparent}
+              onPress={() => navigation.navigate("ForgotPassword")}
+            >
               <Text color="primary">Forgot password</Text>
             </Button>
           </Box>

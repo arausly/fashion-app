@@ -1,16 +1,18 @@
-import { RouteProp, ParamListBase } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
+import { RouteProp, ParamListBase } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 export interface StackNavigationProps<
   ParamList extends ParamListBase,
   RouteName extends keyof ParamList = string
 > {
-  navigation: StackNavigationProp<ParamList, RouteName>
-  route: RouteProp<ParamList, RouteName>
+  navigation: StackNavigationProp<ParamList, RouteName>;
+  route: RouteProp<ParamList, RouteName>;
 }
 
 export type Routes = {
-  OnBoarding: undefined
-  Welcome: undefined
-  Login: undefined
-}
+  OnBoarding: undefined;
+  Welcome: undefined;
+  Login: undefined;
+  SignUp: undefined;
+  ForgotPassword: undefined;
+};

@@ -1,4 +1,9 @@
-import React, { forwardRef, useState } from "react";
+import React, {
+  forwardRef,
+  MutableRefObject,
+  RefObject,
+  useState,
+} from "react";
 import {
   TextInput as RNTextInput,
   StyleSheet,
@@ -15,9 +20,14 @@ interface TextInputProps extends RNTextInputProps {
   touched?: boolean;
 }
 
+export type refType =
+  | MutableRefObject<RNTextInput | null>
+  | ((instance: RNTextInput | null) => void)
+  | null;
+
 const TextInput = (
   { icon, placeholder, errors, touched, ...props }: TextInputProps,
-  ref
+  ref: refType
 ) => {
   const theme = useTheme<Theme>();
   const SIZE = theme.borderRadii.m * 2;

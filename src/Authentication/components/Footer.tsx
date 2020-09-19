@@ -1,5 +1,4 @@
 import React from "react";
-import { TouchableWithoutFeedback } from "react-native";
 import { Button } from "../../components";
 import { Box, Text } from "../../components/theme";
 import SocialLogin from "./SocialLogin";
