@@ -1,7 +1,8 @@
 import React, { ReactNode } from "react";
 import { Dimensions, Image, StyleSheet, StatusBar } from "react-native";
-import theme, { Box } from "./theme";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useTheme } from "@shopify/restyle";
+import { Box, Theme } from "./theme";
 
 export const assets = [require("./assets/pattern1.png")];
 
@@ -15,6 +16,7 @@ interface ContainerProps {
 }
 
 const Container = ({ children, footer }: ContainerProps) => {
+  const theme = useTheme<Theme>();
   const insets = useSafeAreaInsets();
   return (
     <Box flex={1} backgroundColor="secondary">

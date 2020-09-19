@@ -1,11 +1,10 @@
-import React, { ReactNode } from 'react'
-import { Svg, Path } from 'react-native-svg'
-import theme, { Box } from '../../components/theme'
-
-const SIZE = theme.borderRadii.l * 2
+import { useTheme } from "@shopify/restyle";
+import React, { ReactNode } from "react";
+import { Svg, Path } from "react-native-svg";
+import { Box, Theme } from "../../components/theme";
 
 interface SocialIconProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 const GoogleIcon = () => {
@@ -33,8 +32,8 @@ const GoogleIcon = () => {
         fill="#EB4335"
       />
     </Svg>
-  )
-}
+  );
+};
 
 const FacebookIcon = () => {
   return (
@@ -44,8 +43,8 @@ const FacebookIcon = () => {
         fill="#3c5a9a"
       />
     </Svg>
-  )
-}
+  );
+};
 
 const AppleIcon = () => {
   return (
@@ -60,10 +59,12 @@ const AppleIcon = () => {
         fill="#000000"
       />
     </Svg>
-  )
-}
+  );
+};
 
 const SocialIcon = ({ children }: SocialIconProps) => {
+  const theme = useTheme<Theme>();
+  const SIZE = theme.borderRadii.l * 2;
   return (
     <Box
       marginHorizontal="m"
@@ -76,8 +77,8 @@ const SocialIcon = ({ children }: SocialIconProps) => {
     >
       {children}
     </Box>
-  )
-}
+  );
+};
 
 const SocialLogin = () => {
   return (
@@ -92,7 +93,7 @@ const SocialLogin = () => {
         <AppleIcon />
       </SocialIcon>
     </Box>
-  )
-}
+  );
+};
 
-export default SocialLogin
+export default SocialLogin;

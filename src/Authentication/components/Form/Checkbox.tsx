@@ -1,8 +1,9 @@
 import React from 'react'
-import theme, { Box, Text } from '../../../components/theme'
+import { Box, Text, Theme } from '../../../components/theme'
 import { RectButton } from 'react-native-gesture-handler'
 import { Feather as Icon } from '@expo/vector-icons'
 import { StyleSheet } from 'react-native'
+import { useTheme } from '@shopify/restyle'
 
 interface CheckboxProps {
   label: string
@@ -11,6 +12,7 @@ interface CheckboxProps {
 }
 
 const CheckBox = ({ label, checked, onChange }: CheckboxProps) => {
+  const theme = useTheme<Theme>()
   const themeColor: keyof typeof theme.colors = checked ? 'primary' : 'white'
   const color = theme.colors[themeColor]
   return (

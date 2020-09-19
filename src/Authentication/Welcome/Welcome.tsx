@@ -1,22 +1,24 @@
-import React from 'react'
-import { View, Image, Dimensions, StyleSheet } from 'react-native'
-import theme, { Box, Text } from '../../components/theme'
-import { Button, VARIANT_COLOR } from '../../components'
-import { StackNavigationProps, Routes } from '../../components/Navigation'
+import React from "react";
+import { Image, Dimensions, StyleSheet } from "react-native";
+import { Box, Text, Theme } from "../../components/theme";
+import { Button, VARIANT_COLOR } from "../../components";
+import { StackNavigationProps, Routes } from "../../components/Navigation";
+import { useTheme } from "@shopify/restyle";
 
-const { width } = Dimensions.get('window')
+const { width } = Dimensions.get("window");
 
 interface WelcomeProps {}
 
 const picture = {
-  src: require('../assets/5.png'),
+  src: require("../assets/5.png"),
   width: 3383,
   height: 5074,
-}
+};
 
-export const assets = [picture.src]
+export const assets = [picture.src];
 
-const Welcome = ({ navigation }: StackNavigationProps<Routes, 'Welcome'>) => {
+const Welcome = ({ navigation }: StackNavigationProps<Routes, "Welcome">) => {
+  const theme = useTheme<Theme>();
   return (
     <Box flex={1} backgroundColor="white">
       <Box
@@ -58,7 +60,7 @@ const Welcome = ({ navigation }: StackNavigationProps<Routes, 'Welcome'>) => {
           <Button
             variant={VARIANT_COLOR.primary}
             label="Have an account? Login"
-            onPress={() => navigation.navigate('Login')}
+            onPress={() => navigation.navigate("Login")}
           />
           <Button label="Join us, it's Free" onPress={() => {}} />
           <Button
@@ -69,7 +71,7 @@ const Welcome = ({ navigation }: StackNavigationProps<Routes, 'Welcome'>) => {
         </Box>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default Welcome
+export default Welcome;

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ThemeProvider } from "@shopify/restyle";
+import { ThemeProvider, useTheme } from "@shopify/restyle";
 
 //components
 import LoadAssets from "./src/components/LoadAssets";
@@ -7,9 +7,9 @@ import {
   authenticationAssets,
   AuthenticationStack,
 } from "./src/Authentication";
-import theme from "./src/components/theme";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import theme from "./src/components/theme";
 const assets = [...authenticationAssets];
 
 const fonts = {
