@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { Dimensions, Image, StyleSheet, StatusBar } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { useTheme } from "@shopify/restyle";
 import { Box, Theme } from "./theme";
 
@@ -49,7 +50,7 @@ const Container = ({ children, footer }: ContainerProps) => {
           backgroundColor="white"
           flex={1}
         >
-          {children}
+          <KeyboardAwareScrollView>{children}</KeyboardAwareScrollView>
         </Box>
       </Box>
       <Box style={{ paddingBottom: insets.bottom }} paddingTop="m">

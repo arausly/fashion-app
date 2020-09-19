@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 import {
   TextInput as RNTextInput,
   StyleSheet,
@@ -15,13 +15,10 @@ interface TextInputProps extends RNTextInputProps {
   touched?: boolean;
 }
 
-const TextInput = ({
-  icon,
-  placeholder,
-  errors,
-  touched,
-  ...props
-}: TextInputProps) => {
+const TextInput = (
+  { icon, placeholder, errors, touched, ...props }: TextInputProps,
+  ref
+) => {
   const theme = useTheme<Theme>();
   const SIZE = theme.borderRadii.m * 2;
   const themeColor = !touched ? "text-content" : errors ? "danger" : "primary";
@@ -45,7 +42,7 @@ const TextInput = ({
           underlineColorAndroid="transparent"
           placeholder={placeholder}
           placeholderTextColor="#151624"
-          {...props}
+          {...{ ...props, ref }}
         />
       </Box>
       {touched && (
@@ -57,11 +54,16 @@ const TextInput = ({
           alignItems="center"
           justifyContent="center"
         >
-          <Icon name={errors ? "x" : "check"} color="#ffffff" size={14} />
+          <Icon
+            name={errors ? "x" : "check"}
+            color="#ffffff"
+            size={12}
+            style={{ textAlign: "center" }}
+          />
         </Box>
       )}
     </Box>
   );
 };
 
-export default TextInput;
+export default forwardRef(TextInput);
