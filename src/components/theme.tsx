@@ -12,6 +12,7 @@ const theme = createTheme({
     darkGrey: "#8A8D90",
     danger: "#FF0058",
     transparent: "transparent",
+    primaryLight: "#E7F9F7",
   },
   breakpoints: {},
   spacing: {

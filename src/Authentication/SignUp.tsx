@@ -5,7 +5,6 @@ import { TextInput as RNTextInput } from "react-native";
 
 //components
 import { Container, Button, VARIANT_COLOR } from "../components";
-import { SocialLogin } from "./components";
 import { Box, Text } from "../components/theme";
 import { TextInput, Checkbox } from "./components/Form";
 import Footer from "./components/Footer";

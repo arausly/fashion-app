@@ -1,8 +1,8 @@
 import React from "react";
 import { Image, Dimensions, StyleSheet } from "react-native";
-import { Box, Text, Theme } from "../../components/theme";
-import { Button, VARIANT_COLOR } from "../../components";
-import { StackNavigationProps, Routes } from "../../components/Navigation";
+import { Box, Text, Theme } from "../components/theme";
+import { Button, VARIANT_COLOR } from "../components";
+import { StackNavigationProps, Routes } from "../components/Navigation";
 import { useTheme } from "@shopify/restyle";
 
 const { width } = Dimensions.get("window");
@@ -10,7 +10,7 @@ const { width } = Dimensions.get("window");
 interface WelcomeProps {}
 
 const picture = {
-  src: require("../assets/5.png"),
+  src: require("./assets/5.png"),
   width: 3383,
   height: 5074,
 };

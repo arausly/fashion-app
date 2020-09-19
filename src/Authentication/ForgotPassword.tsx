@@ -22,7 +22,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ navigation }) => {
       email: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      navigation.navigate("PasswordChanged");
     },
     validationSchema: ForgotPasswordSchema,
   });
@@ -37,7 +37,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ navigation }) => {
         />
       }
     >
-      <Box padding="xl">
+      <Box padding="xl" justifyContent="center" flex={1}>
         <Text variant="title1" marginBottom="l">
           Forgot Password?
         </Text>

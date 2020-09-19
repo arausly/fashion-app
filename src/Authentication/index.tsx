@@ -6,6 +6,7 @@ import { Routes } from "../components/Navigation";
 import Login from "./Login";
 import ForgotPassword from "./ForgotPassword";
 import SignUp from "./SignUp";
+import PasswordChanged from "./PasswordChanged";
 export { default as OnBoarding } from "./Onboarding";
 export { default as Welcome } from "./Welcome";
 export const authenticationAssets = [...welcomeAssets, ...onBoardingAssets];
@@ -19,5 +20,6 @@ export const AuthenticationStack = () => (
     <AuthStack.Screen name="Login" component={Login} />
     <AuthStack.Screen name="SignUp" component={SignUp} />
     <AuthStack.Screen name="ForgotPassword" component={ForgotPassword} />
+    <AuthStack.Screen name="PasswordChanged" component={PasswordChanged} />
   </AuthStack.Navigator>
 );
