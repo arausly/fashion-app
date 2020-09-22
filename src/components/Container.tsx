@@ -12,7 +12,11 @@ import { useTheme } from "@shopify/restyle";
 import { Box, Theme } from "./theme";
 import Constants from "expo-constants";
 
-export const assets = [require("./assets/pattern1.png")];
+export const assets = [
+  require("./assets/pattern1.png"),
+  require("./assets/pattern2.png"),
+  require("./assets/pattern3.png"),
+] as const;
 
 const { width, height: bHeight } = Dimensions.get("window");
 const aspectRatio = 750 / 1125;
@@ -21,11 +25,13 @@ const height = width * aspectRatio;
 interface ContainerProps {
   children: ReactNode;
   footer: ReactNode;
+  pattern: 0 | 1 | 2;
 }
 
-const Container = ({ children, footer }: ContainerProps) => {
+const Container = ({ children, footer, pattern }: ContainerProps) => {
   const theme = useTheme<Theme>();
   const insets = useSafeAreaInsets();
+  const asset = assets[pattern];
   return (
     <KeyboardAwareScrollView scrollEnabled={false}>
       <Box
@@ -43,7 +49,7 @@ const Container = ({ children, footer }: ContainerProps) => {
             height={height * 0.61}
           >
             <Image
-              source={assets[0]}
+              source={asset}
               style={{
                 width,
                 height,
@@ -54,7 +60,7 @@ const Container = ({ children, footer }: ContainerProps) => {
         </Box>
         <Box flex={1} overflow="hidden">
           <Image
-            source={assets[0]}
+            source={asset}
             style={{ width, height, top: -height * 0.61 }}
           />
           <Box

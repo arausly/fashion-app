@@ -6,9 +6,9 @@ import { TextInput as RNTextInput } from "react-native";
 //components
 import { Container, Button, VARIANT_COLOR } from "../components";
 import { Box, Text } from "../components/theme";
-import { TextInput, Checkbox } from "./components/Form";
 import Footer from "./components/Footer";
 import { Routes, StackNavigationProps } from "../components/Navigation";
+import { Checkbox, TextInput } from "../components/Form";
 
 interface LoginProps {}
 
@@ -32,6 +32,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
   const passwordRef = useRef<RNTextInput>(null);
   return (
     <Container
+      pattern={0}
       footer={
         <Footer
           title="Don't have an account?"

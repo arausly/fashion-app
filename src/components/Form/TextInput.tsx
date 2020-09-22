@@ -10,8 +10,9 @@ import {
   TextInputProps as RNTextInputProps,
 } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
-import { Box, Theme } from "../../../components/theme";
+import { Box, Theme } from "../theme";
 import { useTheme } from "@shopify/restyle";
+import RoundedIcon from "../RoundedIcon";
 
 interface TextInputProps extends RNTextInputProps {
   placeholder: string;
@@ -56,21 +57,12 @@ const TextInput = (
         />
       </Box>
       {touched && (
-        <Box
-          height={SIZE}
-          width={SIZE}
-          borderRadius="m"
+        <RoundedIcon
+          size={SIZE}
+          name={errors ? "x" : "check"}
+          color="white"
           backgroundColor={themeColor}
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Icon
-            name={errors ? "x" : "check"}
-            color="#ffffff"
-            size={12}
-            style={{ textAlign: "center" }}
-          />
-        </Box>
+        />
       )}
     </Box>
   );

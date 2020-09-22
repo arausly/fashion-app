@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { Box, Text } from "../components/theme";
-import { TextInput } from "./components/Form";
+import { TextInput } from "../components/Form";
 
 interface ForgotPasswordProps
   extends StackNavigationProps<Routes, "ForgotPassword"> {}
@@ -29,6 +29,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ navigation }) => {
 
   return (
     <Container
+      pattern={2}
       footer={
         <Footer
           title="Don't work? "

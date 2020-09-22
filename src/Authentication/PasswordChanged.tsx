@@ -11,7 +11,10 @@ const SIZE = 80;
 
 const PasswordChanged: React.FC<PasswordChangedProps> = ({ navigation }) => {
   return (
-    <Container footer={<CloseButton onPress={() => alert("Moving on 😃")} />}>
+    <Container
+      pattern={0}
+      footer={<CloseButton onPress={() => alert("Moving on 😃")} />}
+    >
       <Box flex={1} justifyContent="center" alignItems="center">
         <Box
           style={{ height: SIZE, width: SIZE, borderRadius: SIZE }}
@@ -25,15 +28,15 @@ const PasswordChanged: React.FC<PasswordChangedProps> = ({ navigation }) => {
           </Text>
         </Box>
         <Text variant="title2" marginBottom="m">
-          Let's get Started
+          Your password was successfully changed
         </Text>
         <Text variant="content" textAlign="center">
-          Login to your account below or signup for an amazing experience
+          Close this window and login again
         </Text>
         <Box justifyContent="center" alignItems="center" marginTop="l">
           <Button
             variant={VARIANT_COLOR.primary}
-            label="Reset password"
+            label="Login again"
             onPress={() => {}}
           />
         </Box>
