@@ -10,6 +10,10 @@ import {
 
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import theme from "./src/components/theme";
+import { createStackNavigator } from "@react-navigation/stack";
+import { HomeNavigatorStack } from "./src/Home";
+import { AppRoutes } from "./src/components/Navigation";
+
 const assets = [...authenticationAssets];
 
 const fonts = {
@@ -19,12 +23,23 @@ const fonts = {
   "SFProDisplay-Medium": require("./assets/fonts/SF-Pro-Display-Medium.otf"),
 };
 
+const AppStack = createStackNavigator<AppRoutes>();
+
 export default function App() {
   return (
     <ThemeProvider {...{ theme }}>
       <LoadAssets fonts={fonts} assets={assets}>
         <SafeAreaProvider>
-          <AuthenticationStack />
+          <AppStack.Navigator headerMode="none">
+            <AppStack.Screen
+              name="Authentication"
+              component={AuthenticationStack}
+            ></AppStack.Screen>
+            <AppStack.Screen
+              name="Home"
+              component={HomeNavigatorStack}
+            ></AppStack.Screen>
+          </AppStack.Navigator>
         </SafeAreaProvider>
       </LoadAssets>
     </ThemeProvider>

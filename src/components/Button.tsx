@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
 export enum VARIANT_COLOR {
   primary = "PRIMARY",
   default = "DEFAULT",
-  transparent = "TRANSPARENT",
 }
 
 interface ButtonProps {
@@ -37,11 +36,11 @@ const Button = ({
   const backgroundColor =
     variant === VARIANT_COLOR.primary
       ? theme.colors.primary
-      : variant === VARIANT_COLOR.default
-      ? theme.colors.grey
-      : theme.colors.transparent;
+      : theme.colors.grey;
+
   const color =
     variant === "PRIMARY" ? theme.colors.white : theme.colors.secondary;
+
   return (
     <RectButton
       style={[styles.container, { backgroundColor }]}

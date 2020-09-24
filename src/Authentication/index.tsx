@@ -2,7 +2,7 @@ import React from "react";
 import Welcome, { assets as welcomeAssets } from "./Welcome";
 import OnBoarding, { assets as onBoardingAssets } from "./Onboarding";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Routes } from "../components/Navigation";
+import { AuthenticationRoutes } from "../components/Navigation";
 import Login from "./Login";
 import ForgotPassword from "./ForgotPassword";
 import SignUp from "./SignUp";
@@ -11,7 +11,7 @@ export { default as OnBoarding } from "./Onboarding";
 export { default as Welcome } from "./Welcome";
 export const authenticationAssets = [...welcomeAssets, ...onBoardingAssets];
 
-const AuthStack = createStackNavigator<Routes>();
+const AuthStack = createStackNavigator<AuthenticationRoutes>();
 
 export const AuthenticationStack = () => (
   <AuthStack.Navigator headerMode="none">

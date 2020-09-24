@@ -8,7 +8,7 @@ import Slide, { SLIDE_HEIGHT } from "./Slide";
 import SubSlide from "./SubSlide";
 import Dot from "./Dot";
 
-import { StackNavigationProps, Routes } from "../components/Navigation";
+import { AuthNavigationProps } from "../components/Navigation";
 import { makeStyles, Theme } from "../components/theme";
 import { useTheme } from "@shopify/restyle";
 
@@ -109,9 +109,7 @@ const slides = [
 
 export const assets = slides.map((slide) => slide.picture.src);
 
-const OnBoarding = ({
-  navigation,
-}: StackNavigationProps<Routes, "OnBoarding">) => {
+const OnBoarding = ({ navigation }: AuthNavigationProps<"OnBoarding">) => {
   const styles = useStyles();
   const theme = useTheme<Theme>();
   const scrollRef = useRef<Animated.ScrollView>(null);

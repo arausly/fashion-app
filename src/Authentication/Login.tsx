@@ -7,10 +7,9 @@ import { TextInput as RNTextInput } from "react-native";
 import { Container, Button, VARIANT_COLOR } from "../components";
 import { Box, Text } from "../components/theme";
 import Footer from "./components/Footer";
-import { Routes, StackNavigationProps } from "../components/Navigation";
+import { AuthNavigationProps } from "../components/Navigation";
 import { Checkbox, TextInput } from "../components/Form";
-
-interface LoginProps {}
+import { BorderlessButton } from "react-native-gesture-handler";
 
 const LoginSchema = () =>
   Yup.object().shape({
@@ -18,14 +17,14 @@ const LoginSchema = () =>
     password: Yup.string().min(6, "To short").required("Required"),
   });
 
-const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
+const Login = ({ navigation }: AuthNavigationProps<"Login">) => {
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
       remember: false,
     },
-    onSubmit: (values) => alert(JSON.stringify(values, null, 2)),
+    onSubmit: (values) => navigation.navigate("Home"),
     validationSchema: LoginSchema,
   });
 
@@ -41,7 +40,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
         />
       }
     >
-      <Box padding="xl">
+      <Box padding="xl" flex={1} justifyContent="center">
         <Text variant="title1" marginBottom="l">
           Welcome back
         </Text>
@@ -82,8 +81,8 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
           <Box
             flexDirection="row"
             alignItems="center"
-            justifyContent="center"
-            marginLeft="xl"
+            justifyContent="space-between"
+            style={{ marginLeft: -8 }}
             marginTop="l"
           >
             <Checkbox
@@ -93,12 +92,11 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
                 formik.setFieldValue("remember", !formik.values.remember)
               }
             />
-            <Button
-              variant={VARIANT_COLOR.transparent}
+            <BorderlessButton
               onPress={() => navigation.navigate("ForgotPassword")}
             >
               <Text color="primary">Forgot password</Text>
-            </Button>
+            </BorderlessButton>
           </Box>
           <Box justifyContent="center" alignItems="center" marginTop="l">
             <Button

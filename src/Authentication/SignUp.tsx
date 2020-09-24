@@ -8,7 +8,7 @@ import { Container, Button, VARIANT_COLOR } from "../components";
 import { Box, Text } from "../components/theme";
 import { TextInput, Checkbox } from "../components/Form";
 import Footer from "./components/Footer";
-import { Routes, StackNavigationProps } from "../components/Navigation";
+import { AuthNavigationProps } from "../components/Navigation";
 
 interface SignUpProps {}
 
@@ -21,7 +21,7 @@ const SignUpSchema = () =>
       .required(),
   });
 
-const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
+const SignUp = ({ navigation }: AuthNavigationProps<"SignUp">) => {
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -46,7 +46,7 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
         />
       }
     >
-      <Box padding="xl">
+      <Box padding="xl" justifyContent="center" flex={1}>
         <Text variant="title1" marginBottom="l">
           Create account
         </Text>

@@ -1,15 +1,14 @@
 import React from "react";
 import { Linking } from "react-native";
 import { Button, Container, VARIANT_COLOR } from "../components";
-import { Routes, StackNavigationProps } from "../components/Navigation";
+import { AuthNavigationProps } from "../components/Navigation";
 import Footer from "./components/Footer";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { Box, Text } from "../components/theme";
 import { TextInput } from "../components/Form";
 
-interface ForgotPasswordProps
-  extends StackNavigationProps<Routes, "ForgotPassword"> {}
+interface ForgotPasswordProps extends AuthNavigationProps<"ForgotPassword"> {}
 
 const ForgotPasswordSchema = () =>
   Yup.object().shape({

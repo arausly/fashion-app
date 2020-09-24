@@ -13,6 +13,11 @@ const theme = createTheme({
     danger: "#FF0058",
     transparent: "transparent",
     primaryLight: "#E7F9F7",
+    black: "#000",
+    orange: "#FE5E33",
+    yellow: "#FFC641",
+    pink: "#FF87A2",
+    violet: "#442CB9",
   },
   breakpoints: {},
   spacing: {

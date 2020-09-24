@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Text, Theme } from "../theme";
-import { RectButton } from "react-native-gesture-handler";
+import { BorderlessButton } from "react-native-gesture-handler";
 import { Feather as Icon } from "@expo/vector-icons";
 import { StyleSheet } from "react-native";
 import { useTheme } from "@shopify/restyle";
@@ -16,7 +16,7 @@ const CheckBox = ({ label, checked, onChange }: CheckboxProps) => {
   const themeColor: keyof typeof theme.colors = checked ? "primary" : "white";
   const color = theme.colors[themeColor];
   return (
-    <RectButton onPress={onChange}>
+    <BorderlessButton onPress={onChange}>
       <Box
         flexDirection="row"
         alignItems="center"
@@ -38,7 +38,7 @@ const CheckBox = ({ label, checked, onChange }: CheckboxProps) => {
         </Box>
         <Text>{label}</Text>
       </Box>
-    </RectButton>
+    </BorderlessButton>
   );
 };
 
