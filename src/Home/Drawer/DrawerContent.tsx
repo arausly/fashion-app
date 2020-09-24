@@ -7,9 +7,13 @@ import {
 } from "@react-navigation/drawer";
 
 import DrawerItem, { DrawerItemInterface } from "./DrawerItem";
+import { Header, RoundedIconButton } from "../../components";
+import { DrawerActions, useNavigation } from "@react-navigation/native";
 
 const { width } = Dimensions.get("window");
-export const DRAWER_WIDTH = width;
+export const DRAWER_WIDTH = width * 0.85;
+export const assets = [require("../../components/assets/pattern3.png")];
+
 const aspectRatio = 750 / 1125;
 const height = width * aspectRatio;
 
@@ -64,11 +68,21 @@ const DrawerContent = (
           }}
           backgroundColor="secondary"
           borderBottomRightRadius="xl"
-        ></Box>
+        >
+          <Header
+            left={{
+              icon: "x",
+              onPress: () =>
+                props.navigation.dispatch(DrawerActions.closeDrawer()),
+            }}
+            right={{ icon: "shopping-bag", onPress: () => {} }}
+            title="menu"
+            dark
+          />
+        </Box>
       </Box>
       <Box flex={0.8}>
         <Box flex={1} backgroundColor="secondary"></Box>
-        <Box flex={1} backgroundColor="primary"></Box>
         <Box
           style={{
             ...StyleSheet.absoluteFillObject,
@@ -81,17 +95,12 @@ const DrawerContent = (
         >
           <Box
             style={{
-              height: 150,
-              width: 150,
+              height: 100,
+              width: 100,
               borderRadius: 100,
               position: "absolute",
-              top: -75,
-              left: "55%",
-              transform: [
-                {
-                  translateX: -50,
-                },
-              ],
+              top: -50,
+              left: DRAWER_WIDTH / 2 - 50,
             }}
             backgroundColor="primaryLight"
           ></Box>
@@ -116,7 +125,7 @@ const DrawerContent = (
         height={height * 0.4}
       >
         <Image
-          source={require("../../components/assets/pattern1.png")}
+          source={assets[0]}
           style={{
             ...StyleSheet.absoluteFillObject,
             width: "auto",

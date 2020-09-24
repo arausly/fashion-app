@@ -20,7 +20,7 @@ const DrawerItem: React.FC<DrawerItemInterface> = ({
   const theme = useTheme<Theme>();
   return (
     <RectButton style={{ borderRadius: theme.borderRadii.m, marginBottom: 20 }}>
-      <Box flexDirection="row" alignItems="center" padding="s">
+      <Box flexDirection="row" alignItems="center" padding="m">
         <RoundedIcon
           name={icon}
           backgroundColor={color}

@@ -10,6 +10,7 @@ const theme = createTheme({
     grey: "rgba(12,13,52, 0.05)",
     "slide.grey": "#F4F0EF",
     darkGrey: "#8A8D90",
+    lightGrey: "#FAFAFA",
     danger: "#FF0058",
     transparent: "transparent",
     primaryLight: "#E7F9F7",
@@ -18,6 +19,7 @@ const theme = createTheme({
     yellow: "#FFC641",
     pink: "#FF87A2",
     violet: "#442CB9",
+    lightBlue: "#BFEAF5",
   },
   breakpoints: {},
   spacing: {
@@ -65,6 +67,11 @@ const theme = createTheme({
       fontSize: 15,
       lineHeight: 24,
       fontFamily: "SFProDisplay-Medium",
+    },
+    header: {
+      fontSize: 15,
+      lineHeight: 24,
+      fontFamily: "SFProDisplay-SemiBold",
     },
   },
 });

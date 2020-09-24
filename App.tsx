@@ -11,10 +11,10 @@ import {
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import theme from "./src/components/theme";
 import { createStackNavigator } from "@react-navigation/stack";
-import { HomeNavigatorStack } from "./src/Home";
+import { HomeNavigatorStack, homeAssets } from "./src/Home";
 import { AppRoutes } from "./src/components/Navigation";
 
-const assets = [...authenticationAssets];
+const assets = [...authenticationAssets, ...homeAssets];
 
 const fonts = {
   "SFProDisplay-Bold": require("./assets/fonts/SF-Pro-Display-Bold.otf"),
